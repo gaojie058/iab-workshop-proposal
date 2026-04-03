@@ -110,11 +110,11 @@
       margin-bottom: 0.6rem;
     }
     section h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
-    section .lead { color: var(--text-secondary); font-size: 1rem; max-width: 640px; margin-bottom: 1.5rem; }
+    section .lead { color: var(--text-secondary); font-size: 1rem; max-width: 100%; margin-bottom: 1.5rem; }
     section p { margin-bottom: 0.85rem; }
 
     /* ABOUT */
-    .about-content { max-width: 740px; }
+    .about-content { max-width: 100%; }
 
     /* TOPICS */
     .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
@@ -198,6 +198,14 @@
     .sch-desc em { color: var(--text-secondary); font-size: 0.9rem; }
     .sch.brk { background: var(--bg-alt); border-radius: 6px; margin: 0.15rem -0.6rem; padding-left: 0.6rem; padding-right: 0.6rem; }
 
+    /* LEAD LIST */
+    .lead-list {
+      color: var(--text-secondary); font-size: 1rem;
+      margin: 0 0 1.5rem 1.2rem; padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .lead-list li { margin-bottom: 0.3rem; }
+
     /* CFP */
     .cfp-formats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
@@ -237,8 +245,8 @@
   <div class="container">
     <div class="nav-logo">IAB <span>Workshop</span></div>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#topics">Topics</a>
+      <a href="#about">Motivation</a>
+      <a href="#topics">Scope</a>
       <a href="#speakers">Speakers</a>
       <a href="#schedule">Schedule</a>
       <a href="#cfp">Call for Papers</a>
@@ -257,12 +265,6 @@
       Proposed as a full-day workshop at a major ML/AI conference, 2026
     </div>
 
-    <div class="highlights">
-      <div class="hl"><div class="num">3</div><div class="lab">Perspectives</div></div>
-      <div class="hl"><div class="num">9</div><div class="lab">Organizers</div></div>
-      <div class="hl"><div class="num">6</div><div class="lab">Institutions</div></div>
-      <div class="hl"><div class="num">40%+</div><div class="lab">Discussion Time</div></div>
-    </div>
   </div>
 </header>
 
@@ -340,19 +342,19 @@
     <p class="lead">We are in the process of confirming invited speakers from diverse areas.</p>
     <div class="people-grid cols-4">
       <div class="person-card">
-        <div class="initials">AS</div>
+        <img src="https://people.csail.mit.edu/asolar/images/asolar_head.jpg" alt="Armando Solar-Lezama">
         <div class="name"><a href="https://people.csail.mit.edu/asolar/">Armando Solar-Lezama</a></div>
         <div class="affil">MIT CSAIL</div>
         <div class="focus">Program Synthesis</div>
       </div>
       <div class="person-card">
-        <div class="initials">DY</div>
+        <img src="https://cs.stanford.edu/~diyiy/img/Diyi_Yang.jpg" alt="Diyi Yang">
         <div class="name"><a href="https://cs.stanford.edu/~diyiy/">Diyi Yang</a></div>
         <div class="affil">Stanford University</div>
         <div class="focus">Human-centered NLP</div>
       </div>
       <div class="person-card">
-        <img src="img/graham.jpg" alt="Graham Neubig">
+        <img src="https://www.phontron.com/images/neubig-headshot-2021-small.jpg" alt="Graham Neubig">
         <div class="name"><a href="https://www.phontron.com/">Graham Neubig</a></div>
         <div class="affil">Carnegie Mellon University</div>
         <div class="focus">Language Agents</div>
@@ -396,6 +398,14 @@
     <div class="section-label">Submissions</div>
     <h2>Planned Call for Papers</h2>
     <p class="lead">If accepted, we will welcome submissions on new results, negative findings, benchmarks, position papers, and system demos. All submissions would be non-archival.</p>
+    <p class="lead">We particularly encourage work that addresses <em>how</em> to study agent behavior, including but not limited to:</p>
+    <ul class="lead-list">
+      <li>Behavioral annotation frameworks and taxonomies</li>
+      <li>Interaction trace analysis and visualization</li>
+      <li>Human-subject experimental protocols for studying agent use</li>
+      <li>Mixed-methods approaches bridging ML evaluation with HCI or social science methodologies</li>
+      <li>Benchmarks and metrics for process-level (not just outcome-level) evaluation</li>
+    </ul>
     <div class="cfp-formats">
       <div class="cfp-box">
         <h4>Long Papers</h4>
@@ -426,55 +436,55 @@
     <h2>Proposed Organizing Committee</h2>
     <div class="people-grid cols-3">
       <div class="person-card">
-        <img src="img/sophia.jpg" alt="Sophia Gao">
+        <img src="https://gaojie058.github.io/assets/images/photos/portrait.jpg" alt="Jie (Sophia) Gao">
         <div class="name"><a href="https://gaojie058.github.io/">Jie (Sophia) Gao</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">Human-AI Collaboration</div>
       </div>
       <div class="person-card">
-        <img src="img/kaiser.jpg" alt="Kaiser Sun">
+        <img src="https://gaojie058.github.io/iab-workshop/images/kaiser_sun.png" alt="Kaiser Sun">
         <div class="name"><a href="https://kaiserwholearns.github.io/">Kaiser Sun</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">LLM Interpretability</div>
       </div>
       <div class="person-card">
-        <img src="img/teresa.jpg" alt="Teresa Yeo">
+        <img src="https://aserety.github.io/ty-pp2.jpeg" alt="Teresa Yeo">
         <div class="name"><a href="https://aserety.github.io/">Teresa Yeo</a></div>
         <div class="affil">Google DeepMind</div>
         <div class="focus">Model Robustness</div>
       </div>
       <div class="person-card">
-        <img src="img/daniel.jpg" alt="Daniel Khashabi">
+        <img src="https://danielkhashabi.com/profile11.png" alt="Daniel Khashabi">
         <div class="name"><a href="https://danielkhashabi.com/">Daniel Khashabi</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">Reliable Language AI</div>
       </div>
       <div class="person-card">
-        <img src="img/zhuoran.jpg" alt="Zhuoran Lu">
+        <img src="https://zhuoranlu.github.io/images/lu800.jpg" alt="Zhuoran Lu">
         <div class="name"><a href="https://zhuoranlu.github.io/">Zhuoran Lu</a></div>
         <div class="affil">Purdue University</div>
         <div class="focus">Human-AI Decision Making</div>
       </div>
       <div class="person-card">
-        <img src="img/boyuan.jpg" alt="Boyuan Zheng">
+        <img src="https://gaojie058.github.io/iab-workshop/images/boyuan_zheng.jpg" alt="Boyuan Zheng">
         <div class="name"><a href="https://boyuanzheng010.github.io/">Boyuan Zheng</a></div>
-        <div class="affil">Ohio State University</div>
+        <div class="affil">xAI</div>
         <div class="focus">Web Agents &amp; Safety</div>
       </div>
       <div class="person-card">
-        <div class="initials">KV</div>
-        <div class="name">Katherine Van Koevering</div>
+        <img src="https://gaojie058.github.io/iab-workshop/images/katherine_vankoevering.jpg" alt="Katherine Van Koevering">
+        <div class="name"><a href="https://ktvank.github.io/">Katherine Van Koevering</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">Computational Social Science</div>
       </div>
       <div class="person-card">
-        <img src="img/sijie.jpg" alt="Sijie Ji">
+        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/8dd39412-d3c3-40bb-9209-be3a78a93ae1_800w.png" alt="Sijie Ji">
         <div class="name"><a href="https://sijieji.github.io/">Sijie Ji</a></div>
         <div class="affil">Caltech</div>
         <div class="focus">Physical AI &amp; CPS</div>
       </div>
       <div class="person-card">
-        <img src="img/jentse.jpg" alt="Jen-tse Huang">
+        <img src="https://gaojie058.github.io/iab-workshop/images/jentse_huang.jpg" alt="Jen-tse Huang">
         <div class="name"><a href="https://penguinnnnn.github.io/">Jen-tse Huang</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">LLM Evaluation</div>

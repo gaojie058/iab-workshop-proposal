@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAB — Interpreting Agent Behavior | Proposed Workshop at COLM 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fb;
+      --text: #1c1c28;
+      --text-secondary: #5a6072;
+      --accent: #c8ff00;
+      --blue: #1d4ed8;
+      --blue-light: #eef2ff;
+      --border: #e2e5ea;
+      --card: #ffffff;
+      --radius: 10px;
+      --max-w: 1000px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; }
+    .sans { font-family: 'Inter', -apple-system, sans-serif; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 800; font-size: 0.95rem; color: var(--text); }
+    .nav-logo span { background: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-left: 5px; }
+    .nav-links { display: flex; gap: 1.6rem; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.84rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero { padding: 4.5rem 0 3rem; text-align: center; }
+    .hero-status {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      border: 1px solid #fde68a;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 0.8rem;
+      white-space: nowrap;
+    }
+    .hero .subtitle { font-style: italic; font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 0.6rem; }
+    .hero .venue-line {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .hero .venue-line strong { color: var(--text); }
+    .highlights {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+    }
+    .hl { text-align: center; }
+    .hl .num { font-size: 1.6rem; font-weight: 800; }
+    .hl .lab { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 0.1rem; }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 0; }
+    section.alt { background: var(--bg-alt); }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+    section h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    section .lead { color: var(--text-secondary); font-size: 1rem; max-width: 640px; margin-bottom: 1.5rem; }
+    section p { margin-bottom: 0.85rem; }
+
+    /* ABOUT */
+    .about-content { max-width: 740px; }
+
+    /* TOPICS */
+    .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .topic-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem;
+    }
+    .topic-card h3 { font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .topic-card ul { list-style: none; padding: 0; margin: 0; }
+    .topic-card li {
+      font-size: 0.85rem; color: var(--text-secondary);
+      padding: 0.22rem 0 0.22rem 0.9rem; position: relative;
+      font-family: 'Inter', sans-serif;
+    }
+    .topic-card li::before {
+      content: ''; position: absolute; left: 0; top: 0.6rem;
+      width: 4px; height: 4px; background: var(--blue); border-radius: 50%;
+    }
+
+    /* PEOPLE GRID (shared for speakers + organizers) */
+    .people-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .people-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .people-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .person-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+      text-align: center;
+      background: var(--card);
+      font-family: 'Inter', sans-serif;
+    }
+    .person-card img {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.7rem;
+      border: 2px solid var(--border);
+      background: var(--bg-alt);
+    }
+    .person-card .initials {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 0.7rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 700;
+      background: var(--bg-alt);
+      border: 2px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .person-card .name { font-weight: 700; font-size: 0.88rem; }
+    .person-card .affil { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.1rem; }
+    .person-card .focus { font-size: 0.75rem; color: var(--blue); margin-top: 0.3rem; font-weight: 500; }
+
+    /* ADVISORY */
+    .adv {
+      margin-top: 1.5rem; padding: 1.1rem 1.3rem;
+      background: var(--bg-alt); border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+    }
+    .adv h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .adv p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+    .adv a { color: var(--text); font-weight: 500; }
+
+    /* SCHEDULE */
+    .schedule-list { max-width: 700px; }
+    .sch {
+      display: flex; align-items: baseline;
+      padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem;
+    }
+    .sch:last-child { border-bottom: none; }
+    .sch-time {
+      width: 130px; flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+    }
+    .sch-desc { flex: 1; }
+    .sch-desc em { color: var(--text-secondary); font-size: 0.9rem; }
+    .sch.brk { background: var(--bg-alt); border-radius: 6px; margin: 0.15rem -0.6rem; padding-left: 0.6rem; padding-right: 0.6rem; }
+
+    /* CFP */
+    .cfp-formats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      margin-bottom: 1.5rem; font-family: 'Inter', sans-serif;
+    }
+    .cfp-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; background: var(--card); }
+    .cfp-box h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .cfp-box p { font-size: 0.82rem; color: var(--text-secondary); margin: 0; }
+    .dates-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .date-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; text-align: center; background: var(--card); }
+    .date-card .lab { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .date-card .val { font-size: 0.95rem; font-weight: 700; margin-top: 0.2rem; }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 0; border-top: 1px solid var(--border);
+      text-align: center; font-family: 'Inter', sans-serif;
+      color: var(--text-secondary); font-size: 0.82rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.6rem; white-space: normal; }
+      .highlights { flex-wrap: wrap; gap: 1.2rem; }
+      .topics-grid, .cfp-formats, .dates-row { grid-template-columns: 1fr; }
+      .people-grid.cols-4, .people-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-logo">IAB <span>COLM 2026</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#topics">Topics</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#cfp">Call for Papers</a>
+      <a href="#organizers">Organizers</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-status">&#9679; Proposed Workshop &mdash; Under Review</div>
+    <h1>Interpreting Agent Behavior</h1>
+    <div class="subtitle">Empirical Methods for Understanding Agents</div>
+    <div class="venue-line">
+      Proposed for the <strong>3rd Conference on Language Modeling (COLM 2026)</strong> &middot; October 9, 2026
+    </div>
+
+    <div class="highlights">
+      <div class="hl"><div class="num">3</div><div class="lab">Perspectives</div></div>
+      <div class="hl"><div class="num">9</div><div class="lab">Organizers</div></div>
+      <div class="hl"><div class="num">6</div><div class="lab">Institutions</div></div>
+      <div class="hl"><div class="num">40%+</div><div class="lab">Discussion Time</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2>Motivation</h2>
+    <div class="about-content">
+      <p>
+        LLM-powered agents now autonomously plan, execute, and iterate on complex tasks across software engineering,
+        scientific research, and daily workflows. Yet current evaluation relies almost exclusively on automated
+        benchmarks that measure <em>whether</em> an agent succeeded, not <em>how</em> it behaved, <em>why</em>
+        it failed, or how humans interpreted its actions along the way.
+      </p>
+      <p>
+        Agentic systems continuously generate execution traces, reasoning chains, tool-use logs, and error signals.
+        Understanding agent behavior from this data can help us diagnose failures, predict risk, optimize agent
+        design, and calibrate human trust. Yet the analytical methods remain fragmented: ML measures outcomes;
+        HCI and the social sciences offer complementary tools for analyzing <em>processes</em>.
+      </p>
+      <p>
+        The <strong>Interpreting Agent Behavior (IAB)</strong> workshop proposes to bridge this methodological gap,
+        establishing a common vocabulary for describing agent behaviors, catalyzing open behavioral datasets,
+        and seeding a recurring community that pushes agent interpretation from ad hoc debugging toward a rigorous,
+        reproducible science.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Topics -->
+<section id="topics" class="alt">
+  <div class="container">
+    <div class="section-label">Scope</div>
+    <h2>Proposed Research Questions</h2>
+    <p class="lead">We plan to investigate agent behavior from three complementary perspectives.</p>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <h3>Agent Behavior</h3>
+        <ul>
+          <li>Decision-making under uncertainty</li>
+          <li>Failure cascades and error recovery</li>
+          <li>Multi-agent coordination and emergent behaviors</li>
+          <li>Behavioral differences across LLM backbones</li>
+        </ul>
+      </div>
+      <div class="topic-card">
+        <h3>Human Response</h3>
+        <ul>
+          <li>Trust calibration and over-reliance</li>
+          <li>Verification strategies for agent errors</li>
+          <li>Mental model formation and updating</li>
+          <li>Cognitive sense-making processes</li>
+        </ul>
+      </div>
+      <div class="topic-card">
+        <h3>Human&ndash;Agent Interaction</h3>
+        <ul>
+          <li>Systematic coding of interaction traces</li>
+          <li>Co-evolution of instructions and responses</li>
+          <li>Interface effects on behavior and trust</li>
+          <li>Communication breakdowns and task failures</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Speakers -->
+<section id="speakers">
+  <div class="container">
+    <div class="section-label">Invited Talks</div>
+    <h2>Tentative Speakers</h2>
+    <p class="lead">We are in the process of confirming invited speakers from diverse areas.</p>
+    <div class="people-grid cols-4">
+      <div class="person-card">
+        <div class="initials">AS</div>
+        <div class="name"><a href="https://people.csail.mit.edu/asolar/">Armando Solar-Lezama</a></div>
+        <div class="affil">MIT CSAIL</div>
+        <div class="focus">Program Synthesis</div>
+      </div>
+      <div class="person-card">
+        <div class="initials">DY</div>
+        <div class="name"><a href="https://cs.stanford.edu/~diyiy/">Diyi Yang</a></div>
+        <div class="affil">Stanford University</div>
+        <div class="focus">Human-centered NLP</div>
+      </div>
+      <div class="person-card">
+        <img src="img/graham.jpg" alt="Graham Neubig">
+        <div class="name"><a href="https://www.phontron.com/">Graham Neubig</a></div>
+        <div class="affil">Carnegie Mellon University</div>
+        <div class="focus">Language Agents</div>
+      </div>
+      <div class="person-card">
+        <div class="initials">?</div>
+        <div class="name">TBD</div>
+        <div class="affil">&nbsp;</div>
+        <div class="focus">To be confirmed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section id="schedule" class="alt">
+  <div class="container">
+    <div class="section-label">Program</div>
+    <h2>Proposed Schedule</h2>
+    <p class="lead">Full-day workshop. Over 40% of the program would be dedicated to discussion and interaction.</p>
+    <div class="schedule-list">
+      <div class="sch"><span class="sch-time">09:00 &ndash; 09:15</span><span class="sch-desc">Opening Remarks</span></div>
+      <div class="sch"><span class="sch-time">09:15 &ndash; 09:45</span><span class="sch-desc">Invited Talk 1</span></div>
+      <div class="sch"><span class="sch-time">09:45 &ndash; 10:15</span><span class="sch-desc">Invited Talk 2</span></div>
+      <div class="sch brk"><span class="sch-time">10:15 &ndash; 11:15</span><span class="sch-desc">Poster Session I &amp; Coffee Break</span></div>
+      <div class="sch"><span class="sch-time">11:15 &ndash; 11:45</span><span class="sch-desc">Invited Talk 3</span></div>
+      <div class="sch"><span class="sch-time">11:45 &ndash; 12:15</span><span class="sch-desc">Invited Talk 4</span></div>
+      <div class="sch brk"><span class="sch-time">12:15 &ndash; 13:30</span><span class="sch-desc">Lunch</span></div>
+      <div class="sch"><span class="sch-time">13:30 &ndash; 14:30</span><span class="sch-desc">Panel Discussion: <em>What Would It Take to Trust an Agent?</em></span></div>
+      <div class="sch"><span class="sch-time">14:30 &ndash; 15:00</span><span class="sch-desc">Contributed Spotlight Talks (4 &times; 7 min)</span></div>
+      <div class="sch brk"><span class="sch-time">15:00 &ndash; 16:00</span><span class="sch-desc">Poster Session II &amp; Coffee Break</span></div>
+      <div class="sch"><span class="sch-time">16:00 &ndash; 16:30</span><span class="sch-desc">Open Discussion: <em>Building a Shared Failure Taxonomy</em></span></div>
+      <div class="sch"><span class="sch-time">16:30 &ndash; 16:45</span><span class="sch-desc">Awards &amp; Closing Remarks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CFP -->
+<section id="cfp">
+  <div class="container">
+    <div class="section-label">Submissions</div>
+    <h2>Planned Call for Papers</h2>
+    <p class="lead">If accepted, we will welcome submissions on new results, negative findings, benchmarks, position papers, and system demos. All submissions would be non-archival.</p>
+    <div class="cfp-formats">
+      <div class="cfp-box">
+        <h4>Long Papers</h4>
+        <p>Up to 9 pages + references. Empirical studies, benchmarks, or comprehensive analyses.</p>
+      </div>
+      <div class="cfp-box">
+        <h4>Short Papers</h4>
+        <p>Up to 4 pages + references. Position papers, demos, preliminary findings, or negative results.</p>
+      </div>
+      <div class="cfp-box">
+        <h4>Review Process</h4>
+        <p>COLM 2026 style. Single-anonymous. At least 2 reviews per submission via <a href="https://openreview.net">OpenReview</a>.</p>
+      </div>
+    </div>
+    <div class="dates-row">
+      <div class="date-card"><div class="lab">Proposal Decision</div><div class="val">May 12, 2026</div></div>
+      <div class="date-card"><div class="lab">Paper Submission</div><div class="val">Jun 23, 2026</div></div>
+      <div class="date-card"><div class="lab">Notification</div><div class="val">Jul 24, 2026</div></div>
+      <div class="date-card"><div class="lab">Workshop</div><div class="val">Oct 9, 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Organizers -->
+<section id="organizers" class="alt">
+  <div class="container">
+    <div class="section-label">Committee</div>
+    <h2>Proposed Organizing Committee</h2>
+    <div class="people-grid cols-3">
+      <div class="person-card">
+        <img src="img/sophia.jpg" alt="Sophia Gao">
+        <div class="name"><a href="https://gaojie058.github.io/">Jie (Sophia) Gao</a></div>
+        <div class="affil">Johns Hopkins University</div>
+        <div class="focus">Human-AI Collaboration</div>
+      </div>
+      <div class="person-card">
+        <img src="img/kaiser.jpg" alt="Kaiser Sun">
+        <div class="name"><a href="https://kaiserwholearns.github.io/">Kaiser Sun</a></div>
+        <div class="affil">Johns Hopkins University</div>
+        <div class="focus">LLM Interpretability</div>
+      </div>
+      <div class="person-card">
+        <img src="img/teresa.jpg" alt="Teresa Yeo">
+        <div class="name"><a href="https://aserety.github.io/">Teresa Yeo</a></div>
+        <div class="affil">Google DeepMind</div>
+        <div class="focus">Model Robustness</div>
+      </div>
+      <div class="person-card">
+        <img src="img/daniel.jpg" alt="Daniel Khashabi">
+        <div class="name"><a href="https://danielkhashabi.com/">Daniel Khashabi</a></div>
+        <div class="affil">Johns Hopkins University</div>
+        <div class="focus">Reliable Language AI</div>
+      </div>
+      <div class="person-card">
+        <img src="img/zhuoran.jpg" alt="Zhuoran Lu">
+        <div class="name"><a href="https://zhuoranlu.github.io/">Zhuoran Lu</a></div>
+        <div class="affil">Purdue University</div>
+        <div class="focus">Human-AI Decision Making</div>
+      </div>
+      <div class="person-card">
+        <img src="img/boyuan.jpg" alt="Boyuan Zheng">
+        <div class="name"><a href="https://boyuanzheng010.github.io/">Boyuan Zheng</a></div>
+        <div class="affil">Ohio State University</div>
+        <div class="focus">Web Agents &amp; Safety</div>
+      </div>
+      <div class="person-card">
+        <div class="initials">KV</div>
+        <div class="name">Katherine Van Koevering</div>
+        <div class="affil">Johns Hopkins University</div>
+        <div class="focus">Computational Social Science</div>
+      </div>
+      <div class="person-card">
+        <img src="img/sijie.jpg" alt="Sijie Ji">
+        <div class="name"><a href="https://sijieji.github.io/">Sijie Ji</a></div>
+        <div class="affil">Caltech</div>
+        <div class="focus">Physical AI &amp; CPS</div>
+      </div>
+      <div class="person-card">
+        <img src="img/jentse.jpg" alt="Jen-tse Huang">
+        <div class="name"><a href="https://penguinnnnn.github.io/">Jen-tse Huang</a></div>
+        <div class="affil">Johns Hopkins University</div>
+        <div class="focus">LLM Evaluation</div>
+      </div>
+    </div>
+
+    <div class="adv">
+      <h3>Advisory Board</h3>
+      <p>
+        <a href="https://www.cs.jhu.edu/faculty/ziang-xiao/">Ziang Xiao</a> (JHU) &middot;
+        <a href="https://www.soufianehayou.com/">Soufiane Hayou</a> (JHU) &middot;
+        <a href="https://toby.li/">Toby Jia-Jun Li</a> (Notre Dame) &middot;
+        <a href="https://hjian42.github.io/">Hang Jiang</a> (Northeastern) &middot;
+        <a href="https://www.weiyanshi.com/">Weiyan Shi</a> (Northeastern) &middot;
+        <a href="https://www.linkedin.com/in/nathanson/">Samuel Nathanson</a> (xAI)
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><strong>IAB</strong> &middot; Interpreting Agent Behavior: Empirical Methods for Understanding Agents</p>
+    <p style="margin-top: 0.3rem;">Proposed workshop at COLM 2026 &middot; Contact: <a href="mailto:jgao77@jh.edu">jgao77@jh.edu</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

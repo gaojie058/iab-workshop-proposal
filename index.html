@@ -57,10 +57,6 @@
       background: #ffffff;
     }
     .hero .container { position: relative; z-index: 1; }
-    #heroBg {
-      position: absolute; inset: 0; pointer-events: none;
-      z-index: 0; width: 100%; height: 100%;
-    }
     .hero-status {
       display: inline-block;
       font-family: 'Inter', sans-serif;
@@ -268,7 +264,6 @@
 
 <!-- Hero -->
 <header class="hero">
-  <canvas id="heroBg"></canvas>
   <div class="container">
     <div class="hero-status">&#9679; Proposal Stage</div>
     <h1>Interpreting Agent Behavior</h1>
@@ -277,124 +272,7 @@
   </div>
 </header>
 
-<script>
-(function() {
-  const canvas = document.getElementById('heroBg');
-  const ctx = canvas.getContext('2d');
 
-  const tokens = [
-    'plan()', 'tool_call', '[FAIL]', 'reasoning...', 'execute()',
-    'observe()', 'reflect()', 'ERROR', 'retry(3)', 'search(query)',
-    'think:', '→ step 4', 'trust?', 'why?', 'trace', 'action',
-    'memory[]', 'verify()', 'delegate()', '✓ done', 'loop()',
-    'context', 'parse()', 'fallback', 'intent', 'calibrate',
-  ];
-
-  const MAX_W = 1000;
-  const PAD = 40; // container padding
-  let nodes = [];
-  let W, H;
-
-  function getMargins() {
-    const contentW = Math.min(MAX_W, W) + PAD * 2;
-    const sideW = (W - contentW) / 2;
-    return { left: sideW, right: W - sideW };
-  }
-
-  function randomMarginX(margins) {
-    // Pick left or right margin
-    if (margins.left < 30) return Math.random() * W; // no real margins, scatter freely but faint
-    return Math.random() < 0.5
-      ? Math.random() * (margins.left - 10)
-      : margins.right + Math.random() * (W - margins.right - 10);
-  }
-
-  function resize() {
-    const hero = canvas.parentElement;
-    W = canvas.width = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-  }
-
-  function init() {
-    resize();
-    nodes = [];
-    const margins = getMargins();
-    for (let i = 0; i < 30; i++) {
-      nodes.push({
-        x: randomMarginX(margins),
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        label: tokens[i % tokens.length],
-        size: 10 + Math.random() * 3,
-        alpha: 0.18 + Math.random() * 0.2,
-        color: Math.random() < 0.15 ? 'accent' : Math.random() < 0.2 ? 'blue' : 'dark',
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const margins = getMargins();
-
-    // Edges between nearby nodes
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = `rgba(29,78,216,${(1 - dist / 140) * 0.07})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-    }
-
-    for (const n of nodes) {
-      ctx.font = `500 ${n.size}px 'Inter', sans-serif`;
-      const a = n.alpha;
-      ctx.fillStyle = n.color === 'accent'
-        ? `rgba(150,190,0,${a})`
-        : n.color === 'blue'
-          ? `rgba(29,78,216,${a})`
-          : `rgba(28,28,40,${a})`;
-      ctx.fillText(n.label, n.x, n.y);
-
-      n.x += n.vx;
-      n.y += n.vy;
-
-      // Wrap vertically freely
-      if (n.y < -20) n.y = H + 10;
-      if (n.y > H + 20) n.y = -10;
-
-      // Keep in margins horizontally
-      if (margins.left > 30) {
-        if (n.x < -80 || (n.x > margins.left && n.x < margins.right)) {
-          n.x = randomMarginX(margins);
-          n.y = Math.random() * H;
-        }
-        if (n.x > W + 40) {
-          n.x = randomMarginX(margins);
-          n.y = Math.random() * H;
-        }
-      } else {
-        if (n.x < -80) n.x = W + 40;
-        if (n.x > W + 80) n.x = -40;
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => { resize(); });
-  init();
-  draw();
-})();
-</script>
 
 <!-- About -->
 <section id="about">

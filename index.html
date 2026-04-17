@@ -146,6 +146,7 @@
       gap: 1.2rem;
       margin-top: 1.5rem;
     }
+    .people-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
     .people-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
     .people-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
     .person-card {
@@ -259,7 +260,7 @@
       .hero h1 { font-size: 1.6rem; white-space: normal; }
       .highlights { flex-wrap: wrap; gap: 1.2rem; }
       .topics-grid, .cfp-formats, .dates-row { grid-template-columns: 1fr; }
-      .people-grid.cols-4, .people-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .people-grid.cols-5, .people-grid.cols-4, .people-grid.cols-3 { grid-template-columns: 1fr 1fr; }
       .nav-toggle { display: block; }
       .nav-links {
         display: none;
@@ -302,7 +303,7 @@
   <div class="container">
     <div class="hero-status">&#9679; Proposal Stage</div>
     <h1>Interpreting Agent Behavior</h1>
-    <div class="subtitle">Human-Centered Empirical Methods for Understanding Agents</div>
+    <div class="subtitle">Human-Centered Interpretation of Agents</div>
     <div class="venue-line"><strong>COLM 2026 Workshop</strong> &middot; October 9, 2026</div>
     <img src="img/agents.png" alt="Agent behaviors illustration" class="hero-banner">
   </div>
@@ -317,10 +318,13 @@
     <h2>Motivation</h2>
     <div class="about-content">
       <p>
-        As commercial agentic systems such as Claude Code and Codex see widespread real-world deployment in early 2026, their behaviors have grown increasingly complex. These systems autonomously plan, execute, and iterate on multi-step tasks, generating vast amounts of behavioral data. Yet current evaluation relies almost exclusively on automated benchmarks: pass/fail metrics that reveal <em>whether</em> an agent succeeded but not <em>how</em> it behaved, <em>why</em> it failed, or <em>how</em> humans made sense of its actions. <strong>Bridging this gap between outcome-based metrics and behavioral understanding is essential for building agents that are not only effective but also interpretable, debuggable, and trustworthy.</strong>
+        Widely deployed commercial agents such as Claude and Codex have exhibited complex behaviors, including planning, reasoning, tool use, and failure recovery. These behaviors are captured in vast amounts of behavioral data such as execution logs, prompting histories, and interaction traces. However, existing approaches to understanding agent behaviors remain largely outcome-focused: benchmarks can tell us <em>whether</em> an agent succeeds or fails, but they cannot tell us <em>why</em>. For example, a fail rate does not reveal that an agent fails because it cannot select effective tools. Understanding the &ldquo;why&rdquo; is what humans actually need: developers need it to debug agents, researchers need it to identify behavioral patterns, and policymakers need it to ensure agents align with human values and expectations.
       </p>
       <p>
-        IAB aims to build a community that brings researchers across disciplines, including interpretability, evaluation, HCI, alignment, and computational social science. These researchers are actively developing analysis methods such as benchmarking, trace analysis, red-teaming, corpus analysis, error analysis, qualitative analysis, grounded theory, and think-aloud methods. IAB provides a venue to consolidate these efforts into shared vocabulary, open datasets, and reproducible methodology.
+        <strong>In this workshop, we are interested in a fundamental question: how can we help humans understand agent behaviors?</strong> Humans cannot read thousands of log entries. They need patterns, summaries, and explanations &mdash; in other words, <em>interpretation</em>. Building human-understandable levels of interpretation is essential for evaluating agents and designing agents aligned with human expectations that benefit human life.
+      </p>
+      <p>
+        IAB aims to establish a new community that brings together researchers from interpretability, evaluation, alignment, computational social science, behavioral science, collective intelligence, responsible AI, governance, and HCI. Researchers and practitioners are actively adopting and developing empirical methods for understanding agent behaviors, including grounded theory, qualitative analysis, error analysis, corpus analysis, trace analysis, and red-teaming. IAB provides a venue to consolidate these efforts into shared vocabulary, open datasets, and reproducible methodology.
       </p>
     </div>
   </div>
@@ -336,31 +340,31 @@
       <div class="topic-card">
         <h3>How do agents behave?</h3>
         <ul>
-          <li>How do agents make decisions, propose and revise plans, and select and use tools during multi-step tasks?</li>
-          <li>How do agents behave when they face ambiguity, uncertainty, or incomplete information?</li>
-          <li>How do agents fail, recover from errors, or enter failure cascades during real-world execution?</li>
-          <li>What unexpected or emergent behaviors appear in single-agent and multi-agent systems?</li>
-          <li>How do different model backbones or coordination structures shape observable agent behavior?</li>
+          <li>How do agents plan, reason, and use tools?</li>
+          <li>How do agents handle ambiguity and uncertainty?</li>
+          <li>How and why do agents fail or recover?</li>
+          <li>What emergent behaviors appear in single- and multi-agent systems?</li>
+          <li>How does the choice of model or architecture shape behavior?</li>
         </ul>
       </div>
       <div class="topic-card">
         <h3>How do humans respond?</h3>
         <ul>
-          <li>How do users write, adapt, and refine prompts while working with agents?</li>
-          <li>How do humans verify agent-generated outputs and decide when more checking is needed?</li>
-          <li>How do people calibrate trust in agent outputs, and when does over-reliance emerge?</li>
-          <li>How do users form and update mental models of what agents can and cannot do?</li>
-          <li>How do people interpret, monitor, and make sense of ongoing agent execution?</li>
+          <li>How do users prompt and adapt while working with agents?</li>
+          <li>How do users verify agent outputs?</li>
+          <li>When does over-reliance emerge?</li>
+          <li>How do users build mental models of agent capabilities?</li>
+          <li>How do users monitor ongoing agent execution?</li>
         </ul>
       </div>
       <div class="topic-card">
         <h3>How do they interact?</h3>
         <ul>
-          <li>How do humans and agents collaborate more effectively on complex, open-ended tasks?</li>
-          <li>How do humans communicate intent, constraints, and goals to agents across multi-turn interactions?</li>
-          <li>How do agents and humans negotiate misunderstandings, breakdowns, and repair during collaboration?</li>
-          <li>What patterns emerge from interaction traces, tool-use logs, and human-agent conversations over time?</li>
-          <li>How can we systematically analyze these interactions using empirical methods from HCI and the social sciences?</li>
+          <li>How can humans and agents collaborate effectively?</li>
+          <li>How do users communicate intent and goals?</li>
+          <li>How are misunderstandings and breakdowns repaired?</li>
+          <li>What patterns emerge from interaction traces and logs?</li>
+          <li>What empirical methods best support this analysis?</li>
         </ul>
       </div>
     </div>
@@ -373,7 +377,7 @@
     <div class="section-label">Invited Talks</div>
     <h2>Speakers</h2>
     <p class="lead">We thank the current speakers who are interested in giving a talk.</p>
-    <div class="people-grid cols-4">
+    <div class="people-grid cols-5">
       <div class="person-card">
         <img src="https://people.csail.mit.edu/asolar/images/asolar_head.jpg" alt="Armando Solar-Lezama">
         <div class="name"><a href="https://people.csail.mit.edu/asolar/">Armando Solar-Lezama</a></div>
@@ -397,6 +401,12 @@
         <div class="name"><a href="https://www.phontron.com/">Graham Neubig</a></div>
         <div class="affil">Carnegie Mellon University</div>
         <div class="focus">Language Agents · <span style="color: #d97706; font-weight: 600;">Tentative</span></div>
+      </div>
+      <div class="person-card">
+        <img src="https://www.microsoft.com/en-us/research/wp-content/uploads/2025/08/Marc-Alexandre-Cote-180x180.jpg" alt="Marc-Alexandre Côté">
+        <div class="name"><a href="https://www.microsoft.com/en-us/research/people/macote/">Marc-Alexandre Côté</a></div>
+        <div class="affil">Microsoft Research</div>
+        <div class="focus">RL &amp; Language Agents · <span style="color: #16a34a; font-weight: 600;">Confirmed</span></div>
       </div>
     </div>
   </div>
@@ -435,8 +445,8 @@
     <ul class="lead-list">
       <li><strong>Datasets and Resources:</strong> annotated interaction traces, failure catalogs, human-agent conversational data, simulated behavior data</li>
       <li><strong>New Methods and Tools:</strong> qualitative coding frameworks, think-aloud protocols, interaction visualization, credit assignment tools, LLM-as-judge pipelines</li>
-      <li><strong>Empirical Studies and Findings:</strong> error taxonomies, failure mode catalogs, mechanistic accounts of agent decisions, probing studies of internal states</li>
-      <li><strong>Human-Agent Interaction:</strong> verification strategies, prompting and adaptive behaviors, intent grounding, mid-execution adjustment, joint failure recovery</li>
+      <li><strong>Empirical Studies:</strong> error taxonomies, failure mode analysis, case studies of agent decisions, probing studies of internal states</li>
+      <li><strong>Human-Agent Interaction Analysis:</strong> user verification strategies, user intent grounding, mid-execution adjustment, collaborative failure recovery</li>
     </ul>
     <p class="lead">We also encourage negative results and methodological position papers.</p>
     <div class="cfp-formats">
@@ -551,7 +561,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>IAB</strong> &middot; Interpreting Agent Behavior: Empirical Methods for Understanding Agents</p>
+    <p><strong>IAB</strong> &middot; Interpreting Agent Behavior: Human-Centered Interpretation of Agents</p>
     <p style="margin-top: 0.3rem;">Workshop proposal, 2026 &middot; Contact: <a href="mailto:jgao77@jh.edu">jgao77@jh.edu</a></p>
   </div>
 </footer>

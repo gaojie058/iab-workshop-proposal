@@ -370,7 +370,7 @@
         Commercial autonomous agents such as Claude and Codex now run for hours or even days to complete tasks, and along the way they show complex behavior: they plan, reason, use tools, recover from errors, coordinate with subagents, and communicate with users. We use the word <em>behavior</em>, as in the study of human behavior, for the full range of what an agent does during runtime. This behavior spans <span class="uline">three levels: what agents do and how they do it, what people do in response, and how the two work together</span> through instructions and corrections. All three generate vast behavioral data such as execution logs and interaction traces. Yet existing approaches read this data largely for outcomes: benchmarks tell us <em>whether</em> an agent succeeds or fails, <span class="uline">but not <em>what</em> it did or <em>how</em> it did it</span>.
       </p>
       <p>
-        Understanding <em>what</em> and <em>how</em> is what people actually need. It lets agent developers and model trainers debug failures, compare architectures, and filter training data; it lets agent users and deployment engineers watch production agents to understand safety, cost, and reliability risks. But the field still <span class="uline">lacks the vocabulary, methods, and tools to describe and analyze agent behavior at scale</span>. Humans cannot read through thousands of log entries; they need patterns, summaries, and explanations, in other words <span class="uline"><em>interpretation</em></span>, and we do not yet know how to scale it.
+        Understanding <em>what</em> and <em>how</em> is what people actually need. It lets agent developers and model trainers debug failures, compare architectures, and filter training data; it lets agent users and deployment engineers watch production agents to understand safety, cost, and reliability risks. For agentic models, the trajectory is both the training data and what the reward scores. Interpreting it therefore sits inside the training loop, deciding which rollouts are safe to reinforce and flagging reward that reflects a verifier exploit rather than real skill. But the field still <span class="uline">lacks the vocabulary, methods, and tools to describe and analyze agent behavior at scale</span>. Humans cannot read through thousands of log entries; they need patterns, summaries, and explanations, in other words <span class="uline"><em>interpretation</em></span>, and we do not yet know how to scale it.
       </p>
       <p>
         <strong>IAB works toward an interpretive science of agent behavior.</strong> It treats behavior across these three levels as the object of study and proceeds in two steps: first gathering the community to identify the problem space and emerging challenges, then bringing the broad set of methods that social scientists have developed &mdash; grounded theory, qualitative analysis, error analysis, corpus analysis, trace analysis, and red-teaming &mdash; to read meaning from this data, discover categories from it, and count them. <span class="uline">IAB bridges two communities: social science and HCI contribute the interpretation methods, while AI contributes the problem space</span> of evaluation, governance, alignment, and responsible AI.
@@ -449,7 +449,7 @@
         <div class="focus">Language Agents · <span style="color: #16a34a; font-weight: 600;">Confirmed</span></div>
       </div>
       <div class="person-card">
-        <img src="https://www.microsoft.com/en-us/research/wp-content/uploads/2025/08/Marc-Alexandre-Cote-180x180.jpg" alt="Marc-Alexandre Côté">
+        <img src="img/marc.jpg" alt="Marc-Alexandre Côté">
         <div class="name"><a href="https://www.microsoft.com/en-us/research/people/macote/">Marc-Alexandre Côté</a></div>
         <div class="affil">Microsoft Research</div>
         <div class="focus">RL &amp; Language Agents · <span style="color: #16a34a; font-weight: 600;">Confirmed</span></div>
@@ -534,7 +534,7 @@
         <div class="focus">Human-AI Collaboration</div>
       </div>
       <div class="person-card">
-        <img src="https://gaojie058.github.io/iab-workshop/images/kaiser_sun.png" alt="Kaiser Sun">
+        <img src="img/kaiser.jpg" alt="Kaiser Sun">
         <div class="name"><a href="https://kaiserwholearns.github.io/">Kaiser Sun</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">LLM Interpretability</div>
@@ -558,13 +558,13 @@
         <div class="focus">Human-AI Decision Making</div>
       </div>
       <div class="person-card">
-        <img src="https://gaojie058.github.io/iab-workshop/images/boyuan_zheng.jpg" alt="Boyuan Zheng">
+        <img src="img/boyuan.jpg" alt="Boyuan Zheng">
         <div class="name"><a href="https://boyuanzheng010.github.io/">Boyuan Zheng</a></div>
         <div class="affil">xAI</div>
         <div class="focus">Web Agents &amp; Safety</div>
       </div>
       <div class="person-card">
-        <img src="https://gaojie058.github.io/iab-workshop/images/katherine_vankoevering.jpg" alt="Katherine Van Koevering">
+        <img src="img/katherine.jpg" alt="Katherine Van Koevering">
         <div class="name"><a href="https://ktvank.github.io/">Katherine Van Koevering</a></div>
         <div class="affil">Johns Hopkins University</div>
         <div class="focus">Computational Social Science</div>
